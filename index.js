@@ -51,25 +51,15 @@ app.get('/webhook', (req, res) => {
 });
 
 app.get('/', (req, res) => {
-    res.status(200).send(`
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Bot</title>
-    </head>
-    <body>
-            <h1>Bot de vida MMR </h1>
-    </body>
-    </html>
-    `)
-});
+    const name = process.env.NAME || 'World';
+    res.send(`Hello ${name}!`);
+  });
 
 // Sets server port and logs message on success
 //app.listen(process.env.PORT || 1337, () => console.log('webhook is listening'));
-app.listen(8080, () =>{
-    console.log('Servidor iniciado...')
+const port = process.env.PORT || 8080;
+app.listen(port, () => {
+  console.log(`helloworld: listening on port ${port}`);
 });
 
 
